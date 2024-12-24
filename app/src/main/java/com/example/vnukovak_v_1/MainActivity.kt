@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.vnukovak_v_1
 
 import androidx.compose.foundation.Image
@@ -20,6 +22,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,7 +39,7 @@ fun LoginScreen(onLoginClick: () -> Unit) {
 
         Image(
             painter = painterResource(id = R.drawable.orange_cat_in_spacesuit),
-            contentDescription = "Оранжевый кот в космическом скафандре",
+            contentDescription = "",
             modifier = Modifier.size(100.dp)
         )
 
@@ -87,7 +90,6 @@ fun LoginScreen(onLoginClick: () -> Unit) {
         }
     }
 }
-
 @Composable
 fun ProfileScreen(userName: String, onLogoutClick: () -> Unit, onSettingsClick: () -> Unit) {
     Column(
@@ -106,7 +108,7 @@ fun ProfileScreen(userName: String, onLogoutClick: () -> Unit, onSettingsClick: 
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("Привет, $userName", fontWeight = FontWeight.Bold)
+        Text("Привет, user", fontWeight = FontWeight.Bold)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -132,7 +134,6 @@ fun ProfileScreen(userName: String, onLogoutClick: () -> Unit, onSettingsClick: 
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Вторая карточка
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -247,5 +248,24 @@ fun SettingSwitch(label: String, isChecked: Boolean) {
             onCheckedChange = { /* Handle switch change */ },
             colors= SwitchDefaults.colors(checkedThumbColor= Color(0xFFFFA500))
         )
+    }
+}
+@Preview(showBackground = true, name = "Settings Screen Preview")
+@Composable
+fun SettingsScreenPreview() {
+    SettingsScreen(onBackClick = {})
+}
+
+@Preview(showBackground = true, name = "Setting Switch Preview")
+@Composable
+fun SettingSwitchPreview() {
+    SettingSwitch(label = "Some Setting", isChecked = false)
+}
+
+@Preview(showBackground = true, name = "Card Preview")
+@Composable
+fun CardPreview() {
+    Card(modifier = Modifier.padding(16.dp)) {
+        Text(text = "This is content inside a Card.")
     }
 }
