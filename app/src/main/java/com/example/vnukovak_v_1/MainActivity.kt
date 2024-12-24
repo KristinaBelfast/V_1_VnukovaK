@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,6 +24,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+
+private fun Any.SettingSwitch(s: String, switchState1: Boolean) {
+
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,21 +50,30 @@ fun LoginScreen(onLoginClick: () -> Unit) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        OutlinedTextField(
-            value = "",
-            onValueChange = {},
-            label = { Text("Логин: User") },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(8.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedContainerColor = Color.Transparent,
-                unfocusedContainerColor = Color.Transparent,
-                focusedIndicatorColor = Color.Gray,
-                unfocusedIndicatorColor = Color.Gray
-            )
-        )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        @Composable
+        fun LoginScreen() {
+            var login by remember { mutableStateOf("") }
+            var password by remember { mutableStateOf("") }
+
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                // Cat Image
+                Image(
+                    painter = painterResource(id = R.drawable.orange_cat_in_spacesuit),
+                    contentDescription = "Cat Astronaut",
+                    modifier = Modifier.size(150.dp)
+                )
+                Spacer(modifier = Modifier.height(32.dp))
+
+
+                Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
             value = "",
@@ -69,10 +83,6 @@ fun LoginScreen(onLoginClick: () -> Unit) {
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedContainerColor = Color.Transparent,
-                unfocusedContainerColor = Color.Transparent,
-                focusedIndicatorColor = Color.Gray,
-                unfocusedIndicatorColor = Color.Gray
             )
         )
 
@@ -115,8 +125,7 @@ fun ProfileScreen(userName: String, onLogoutClick: () -> Unit, onSettingsClick: 
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8.dp),
-            backgroundColor = Color.White,
-            elevation = 4.dp
+            elevation = CardDefaults.cardElevation(4.dp)
         ) {            Column(modifier = Modifier.padding(16.dp)) {
             Text("Ты запустил ракету")
             Text("22 декабря, в 11:20", fontWeight = FontWeight.Bold)
@@ -203,8 +212,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8.dp),
-            backgroundColor = Color.White,
-            elevation = 4.dp
+            elevation = CardDefaults.cardElevation(4.dp)
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Техническая поддержка")
@@ -250,22 +258,6 @@ fun SettingSwitch(label: String, isChecked: Boolean) {
         )
     }
 }
-@Preview(showBackground = true, name = "Settings Screen Preview")
-@Composable
-fun SettingsScreenPreview() {
-    SettingsScreen(onBackClick = {})
-}
 
-@Preview(showBackground = true, name = "Setting Switch Preview")
-@Composable
-fun SettingSwitchPreview() {
-    SettingSwitch(label = "Some Setting", isChecked = false)
-}
-
-@Preview(showBackground = true, name = "Card Preview")
-@Composable
-fun CardPreview() {
-    Card(modifier = Modifier.padding(16.dp)) {
-        Text(text = "This is content inside a Card.")
     }
 }
