@@ -39,7 +39,8 @@ fun LoginScreen(onLoginClick: () -> Unit) {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    ) {
+    )
+    {
         Text("Авторизация", fontSize = 20.sp, color = Color.Gray)
 
         Image(
