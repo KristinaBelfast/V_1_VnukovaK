@@ -25,6 +25,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 
+@Preview(showBackground = true, name = "Settings Screen Preview")
+@Composable
+fun SettingsScreenPreview() {
+
+}
+
+
+@Preview(showBackground = true, name = "Setting Switch Preview")
+@Composable
+fun SettingSwitchPreview() {
+}
+
+@Preview(showBackground = true, name = "Card Preview")
+@Composable
+fun CardPreview() {
+    Card(modifier = Modifier.padding(16.dp)) {
+        Text(text = "This is content inside a Card.")
+    }
+}
 private fun Any.SettingSwitch(s: String, switchState1: Boolean) {
 
 }
